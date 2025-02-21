@@ -16,7 +16,7 @@ const localFilePath = path.join(__dirname, 'spisokKnig.xlsx'); // Локальн
 // 🔹 Функция для загрузки Excel-файла из сети
 const downloadFile = async () => {
     try {
-        const fileUrl = "http://192.168.1.5/interview/1СУП/ООИРП/КБ/spisokKnig.xlsx"; // Локальный сервер (замените на ваш)
+        const fileUrl = "C:\pythonProject3\excel-server\spisokKnig.xlsx"; // Локальный сервер (замените на ваш)
         const response = await axios({
             method: 'GET',
             url: fileUrl,
