@@ -5,11 +5,11 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 5000; // Используем порт, который назначает Render
+const PORT = process.env.PORT || 5000; // ✅ Используем порт, который назначает Render
 
-app.use(cors()); // Разрешаем запросы с фронтенда
+app.use(cors()); // ✅ Разрешаем запросы с фронтенда
 
-// 📌 Путь к локальному файлу (он должен быть в проекте!)
+// 📌 Путь к файлу Excel (он должен быть в проекте!)
 const filePath = path.join(__dirname, 'spisokKnig.xlsx');
 
 // Проверяем, существует ли файл
@@ -33,14 +33,14 @@ app.get('/data', (req, res) => {
         const sheetName = workbook.SheetNames[0];
         const data = xlsx.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
-        res.json(data); // Отправляем данные в JSON
+        res.json(data); // ✅ Отправляем данные в JSON
     } catch (error) {
         console.error(`❌ Ошибка при чтении файла: ${error.message}`);
         res.status(500).json({ error: 'Ошибка при чтении файла', details: error.message });
     }
 });
 
-// 🔹 Запускаем сервер и слушаем PORT от Render
-app.listen(PORT, () => {
+// ✅ Запускаем сервер и слушаем PORT от Render
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`✅ Сервер запущен на порту ${PORT}`);
 });
